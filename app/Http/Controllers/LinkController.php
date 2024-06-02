@@ -7,7 +7,6 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redis;
-use mysql_xdevapi\Exception;
 
 class LinkController extends Controller
 {
