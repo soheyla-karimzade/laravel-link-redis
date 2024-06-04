@@ -15,10 +15,7 @@ if (!function_exists('hash_string')) {
 }
 
 if (!function_exists('redisSort')) {
-    /**
-     * Create a short, fairly unique, urlsafe hash for the input string.
-     */
     function redisSort($a, $b) {
-        return $a['Click'] < $b['Click'];
+        return $a['click'] < $b['click'];
     }
 }

@@ -13,18 +13,18 @@
         </tr>
         </thead>
         <tbody>
-        @foreach ($linksPaginator as $link)
+        @foreach ($links as $link)
             <tr>
-                <td>{{ $link['Text'] }}</td>
-                <td><a href="#" class="update-redis" data-link="{{ $link['Link'] }}" data-href="{{ $link['Text'] }}">{{ $link['Link'] }}</a></td>
-                <td>{{ $link['Click'] }}</td>
+                <td>{{ $link->text }}</td>
+                <td><a href="#" class="update-redis" data-id='{{ $link->id}}' data-link="{{ $link->link }}" data-href="{{ $link->text }}">{{ $link->link }}</a></td>
+                <td>{{ $link->click }}</td>
             </tr>
         @endforeach
         </tbody>
     </table>
 
     <div class="d-flex justify-content-center">
-        {{ $linksPaginator->links() }}
+        {{ $links->links() }}
     </div>
 </div>
 {{----}}
@@ -38,12 +38,14 @@
             console.log('href');
             var href = $(this).data('href');
             var link = $(this).data('link');
+            var id = $(this).data('id');
             $.ajax({
                 url: "{{ route('update.redis.value') }}",
                 type: "POST",
                 data: {
                     _token: "{{ csrf_token() }}",
                     link: link,
+                    id: id,
                 },
                 success: function(response) {
                     if(response.success) {

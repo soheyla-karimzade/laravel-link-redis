@@ -7,8 +7,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/create', [LinkController::class, 'createLink'])->name('create');
-Route::post('/create', [LinkController::class, 'create']);
+Route::get('/create', [LinkController::class, 'create'])->name('create');
+Route::post('/create', [LinkController::class, 'store']);
 Route::get('/links', [LinkController::class, 'index']);
 Route::get('/links/count/{count?}', [LinkController::class, 'getLinksCount']);
 
